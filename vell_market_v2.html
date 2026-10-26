@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="id" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VELL MARKET — Futuristic Web, Motion & Finance Ecosystem</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Google Fonts: Strictly Futuristic, Tech & Clean (Orbitron, Space Grotesk, JetBrains Mono, Syne) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Orbitron:wght@500;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            vell: {
+              bg: '#030611',
+              card: 'rgba(10, 16, 31, 0.75)',
+              border: 'rgba(0, 240, 255, 0.15)',
+              cyan: '#00f0ff',
+              purple: '#8b5cf6',
+              emerald: '#10b981',
+              neonYellow: '#facc15'
+            }
+          },
+          fontFamily: {
+            orbitron: ['Orbitron', 'sans-serif'],
+            space: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+            syne: ['Syne', 'sans-serif']
+          },
+          boxShadow: {
+            'glow-cyan': '0 0 30px rgba(0, 240, 255, 0.25)',
+            'glow-purple': '0 0 30px rgba(139, 92, 246, 0.25)',
+            'glow-emerald': '0 0 30px rgba(16, 185, 129, 0.25)',
+            'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.5)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: #030611;
+      color: #e2e8f0;
+      overflow-x: hidden;
+    }
+
+    /* Grid Overlay Effect */
+    .cyber-grid {
+      background-image: 
+        linear-gradient(to right, rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    /* Glassmorphism Styles */
+    .glass-panel {
+      background: rgba(8, 14, 28, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(0, 240, 255, 0.12);
+    }
+
+    .glass-nav {
+      background: rgba(3, 6, 17, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Text & Border Gradients */
+    .gradient-text-cyan {
+      background: linear-gradient(135deg, #00f0ff 0%, #3b82f6 50%, #ffffff 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gradient-text-purple {
+      background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #ffffff 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Custom Futuristic Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #030611;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00f0ff;
+    }
+
+    /* HUD Corner Brackets */
+    .hud-box {
+      position: relative;
+    }
+    .hud-box::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      width: 10px;
+      height: 10px;
+      border-top: 2px solid #00f0ff;
+      border-left: 2px solid #00f0ff;
+    }
+    .hud-box::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      right: -1px;
+      width: 10px;
+      height: 10px;
+      border-bottom: 2px solid #00f0ff;
+      border-right: 2px solid #00f0ff;
+    }
+
+    /* Scanline Animation */
+    @keyframes scanline {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(1000%); }
+    }
+    .scanline-effect {
+      animation: scanline 8s linear infinite;
+    }
+  </style>
+</head>
+<body class="relative min-h-screen selection:bg-cyan-500 selection:text-black cyber-grid">
+
+  <!-- BACKGROUND NEON ATMOSPHERE ORBS -->
+  <div class="fixed top-0 left-1/4 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[150px] pointer-events-none z-0"></div>
+  <div class="fixed top-1/2 right-10 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[160px] pointer-events-none z-0"></div>
+  <div class="fixed bottom-10 left-1/3 w-[550px] h-[550px] bg-emerald-500/10 rounded-full blur-[150px] pointer-events-none z-0"></div>
+
+  <!-- NAVIGATION BAR -->
+  <header class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-cyan-500 via-purple-600 to-emerald-400 p-[1px] shadow-glow-cyan group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-vell-bg rounded-[7px] flex items-center justify-center">
+            <span class="font-orbitron font-extrabold text-cyan-400 text-lg">V</span>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-orbitron font-black text-xl tracking-widest text-white group-hover:text-cyan-400 transition-colors">
+            VELL<span class="text-cyan-400">.</span>MARKET
+          </span>
+          <span class="font-mono text-[9px] text-gray-400 tracking-widest uppercase">Digital & Motion Ecosystem</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest text-gray-300">
+        <a href="#layanan" class="hover:text-cyan-400 transition-colors hover:underline underline-offset-8">01 // Layanan</a>
+        <a href="#demo" class="hover:text-cyan-400 transition-colors hover:underline underline-offset-8">02 // Interactive Playground</a>
+        <a href="#showcase" class="hover:text-cyan-400 transition-colors hover:underline underline-offset-8">03 // Motion Lab</a>
+        <a href="#estimator" class="hover:text-cyan-400 transition-colors hover:underline underline-offset-8">04 // Project Estimator</a>
+      </nav>
+
+      <!-- Status Indicator & CTA -->
+      <div class="flex items-center gap-4">
+        <div class="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel text-[11px] font-mono text-emerald-400 border border-emerald-500/30">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          SYSTEM ONLINE // 2026
+        </div>
+
+        <a href="#kontak" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-orbitron font-bold text-xs uppercase tracking-wider hover:brightness-125 shadow-glow-cyan transition-all">
+          <i class="fa-solid fa-bolt"></i>
+          <span>Inisiasi Order</span>
+        </a>
+
+        <!-- Mobile Menu Trigger -->
+        <button onclick="toggleMobileMenu()" class="md:hidden text-2xl text-gray-300 hover:text-cyan-400">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="hidden md:hidden glass-panel border-t border-white/10 px-6 py-6 flex-col gap-4 font-mono text-sm">
+      <a href="#layanan" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-cyan-400 py-2">01 // Layanan Digital</a>
+      <a href="#demo" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-cyan-400 py-2">02 // Interactive Playground</a>
+      <a href="#showcase" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-cyan-400 py-2">03 // Motion & Video Lab</a>
+      <a href="#estimator" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-cyan-400 py-2">04 // Financial & Project Estimator</a>
+      <a href="#kontak" onclick="toggleMobileMenu()" class="text-cyan-400 font-bold py-2"><i class="fa-solid fa-paper-plane mr-2"></i> Kontak Kami</a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION WITH HUD OVERLAY -->
+  <section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
+    <!-- Grid Scanline Background -->
+    <div class="absolute inset-0 pointer-events-none opacity-20">
+      <div class="w-full h-full bg-gradient-to-b from-cyan-500/20 via-transparent to-transparent scanline-effect"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Hero Text Left -->
+        <div class="lg:col-span-7 space-y-8">
+          <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-panel border border-cyan-500/30 text-cyan-400 font-mono text-xs uppercase tracking-widest shadow-glow-cyan">
+            <i class="fa-solid fa-microchip text-sm"></i>
+            <span>Vell Market Digital Systems v3.4[span_1](start_span)[span_1](end_span)</span>
+          </div>
+
+          <h1 class="font-orbitron text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight text-white leading-none">
+            INOSIASI <span class="gradient-text-cyan">WEB</span>, MOTION & <span class="gradient-text-purple">FINANCE</span>[span_2](start_span)[span_2](end_span)
+          </h1>
+
+          <p class="text-gray-300 text-base sm:text-lg font-space font-light leading-relaxed max-w-2xl">
+            Satu hub terintegrasi untuk **Web Edukatif & Interaktif**, produksi **Motion Graphics & Video Editing Presisi** (JJ, Mograph, Typography FX), serta **Solusi Analisis & Alat Keuangan** berstandar profesional.[span_3](start_span)[span_3](end_span)
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+            <a href="#layanan" class="px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-black font-orbitron font-extrabold text-xs uppercase tracking-wider hover:brightness-125 shadow-glow-cyan transition-all text-center flex items-center justify-center gap-3">
+              <span>Eksplorasi Ekosistem</span>
+              <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+            <a href="#demo" class="px-8 py-4 rounded-xl glass-panel border border-cyan-500/40 hover:border-cyan-400 text-white font-orbitron font-bold text-xs uppercase tracking-wider hover:bg-cyan-500/10 transition-all text-center flex items-center justify-center gap-3">
+              <i class="fa-solid fa-gamepad text-cyan-400"></i>
+              <span>Coba Demo Live</span>
+            </a>
+          </div>
+
+          <!-- Mini Tech Stack Badges -->
+          <div class="pt-6 border-t border-white/10 flex flex-wrap items-center gap-6 font-mono text-xs text-gray-400">
+            <span class="text-gray-500 uppercase tracking-wider">// CORE STACK:</span>
+            <span class="hover:text-cyan-400 transition-colors"><i class="fa-brands fa-react mr-1 text-cyan-400"></i> Interactive Web</span>
+            <span class="hover:text-purple-400 transition-colors"><i class="fa-solid fa-film mr-1 text-purple-400"></i> After Effects & Premiere</span>
+            <span class="hover:text-emerald-400 transition-colors"><i class="fa-solid fa-chart-line mr-1 text-emerald-400"></i> Financial Analytics</span>
+          </div>
+        </div>
+
+        <!-- Hero Futuristic HUD Display Right -->
+        <div class="lg:col-span-5">
+          <div class="hud-box glass-panel p-6 rounded-2xl border border-cyan-500/30 relative overflow-hidden shadow-2xl">
+            <!-- HUD Header -->
+            <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+              <div class="flex items-center gap-2 font-mono text-xs text-cyan-400">
+                <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></span>
+                <span>HUD // CORE METRICS</span>
+              </div>
+              <span class="font-mono text-[10px] text-gray-500">SYS_ID: VM-2026-X[span_4](start_span)[span_4](end_span)</span>
+            </div>
+
+            <!-- Animated Graphic Widget -->
+            <div class="space-y-6">
+              <!-- Metric Item 1 -->
+              <div>
+                <div class="flex justify-between font-mono text-xs mb-2">
+                  <span class="text-gray-400">Kinerja Render Motion & FX</span>
+                  <span class="text-cyan-400 font-bold">99.8% Perfect</span>
+                </div>
+                <div class="w-full bg-white/5 h-2 rounded-full overflow-hidden p-0.5 border border-white/10">
+                  <div class="bg-gradient-to-r from-cyan-500 to-blue-500 h-full rounded-full w-[99%] shadow-glow-cyan"></div>
+                </div>
+              </div>
+
+              <!-- Metric Item 2 -->
+              <div>
+                <div class="flex justify-between font-mono text-xs mb-2">
+                  <span class="text-gray-400">Akurasi Kalkulasi Finance</span>
+                  <span class="text-purple-400 font-bold">100.0% Realtime</span>
+                </div>
+                <div class="w-full bg-white/5 h-2 rounded-full overflow-hidden p-0.5 border border-white/10">
+                  <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-full rounded-full w-[100%] shadow-glow-purple"></div>
+                </div>
+              </div>
+
+              <!-- Metric Item 3 -->
+              <div>
+                <div class="flex justify-between font-mono text-xs mb-2">
+                  <span class="text-gray-400">Interaktivitas Web Edukasi</span>
+                  <span class="text-emerald-400 font-bold">Ultra Responsive</span>
+                </div>
+                <div class="w-full bg-white/5 h-2 rounded-full overflow-hidden p-0.5 border border-white/10">
+                  <div class="bg-gradient-to-r from-emerald-400 to-teal-500 h-full rounded-full w-[95%] shadow-glow-emerald"></div>
+                </div>
+              </div>
+
+              <!-- Live Status Console -->
+              <div class="p-4 rounded-xl bg-black/60 border border-white/10 font-mono text-xs space-y-2">
+                <div class="text-gray-400">[CONSOLE_LOG] <span class="text-emerald-400">Ready for deployment.</span></div>
+                <div class="text-gray-400">[SERVICES] <span class="text-cyan-400">Web Edu, Video FX & Finance Active.</span></div>
+                <div class="text-gray-400">[CLIENTS] <span class="text-purple-400">Satisfaction score: 4.98 / 5.0</span></div>
+              </div>
+            </div>
+
+            <!-- HUD Bottom Status -->
+            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-gray-400">
+              <span>SECURITY: ENCRYPTED</span>
+              <span class="text-cyan-400">VELL MARKET CORE[span_5](start_span)[span_5](end_span)</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SEKSI LAYANAN UTAMA (SERVICES MATRIX) -->
+  <section id="layanan" class="py-28 relative z-10 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Section Title -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+        <div>
+          <div class="font-mono text-xs text-cyan-400 uppercase tracking-widest mb-3">// 01. EKOSISTEM UTAMA</div>
+          <h2 class="font-orbitron text-3xl sm:text-5xl font-black uppercase text-white">
+            MATRIKS <span class="gradient-text-cyan">LAYANAN</span> VELL MARKET[span_6](start_span)[span_6](end_span)
+          </h2>
+        </div>
+        <p class="text-gray-400 text-sm font-space font-light max-w-md mt-4 md:mt-0">
+          Tiga pilar spesialisasi digital yang dirancang untuk meningkatkan kredibilitas brand, edukasi pengguna, dan efisiensi finansial Anda.[span_7](start_span)[span_7](end_span)
+        </p>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Service 1: Web Edukatif & Interaktif -->
+        <div class="glass-panel p-8 rounded-2xl border border-cyan-500/20 hover:border-cyan-400 transition-all duration-300 hover:-translate-y-2 group hud-box">
+          <div class="w-14 h-14 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:shadow-glow-cyan transition-all">
+            <i class="fa-solid fa-laptop-code"></i>
+          </div>
+
+          <div class="font-mono text-xs text-cyan-400 uppercase tracking-widest mb-2">CATEGORY 01</div>
+          <h3 class="font-orbitron text-xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors">
+            Web Edukatif & Interaktif[span_8](start_span)[span_8](end_span)
+          </h3>
+          <p class="text-gray-300 text-sm font-space font-light leading-relaxed mb-6">
+            Pengembangan platform web interaktif untuk modul pembelajaran, e-learning, simulasi gamifikasi, dan aplikasi edukasi yang imersif serta ramah pengguna.[span_9](start_span)[span_9](end_span)
+          </p>
+
+          <ul class="space-y-2.5 font-mono text-xs text-gray-400 border-t border-white/10 pt-4 mb-6">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-cyan-400"></i> Gamifikasi & Simulasi Canvas[span_10](start_span)[span_10](end_span)</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-cyan-400"></i> Modul Quiz & Progress Tracking[span_11](start_span)[span_11](end_span)</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-cyan-400"></i> UI/UX Ultra Clean & Responsif[span_12](start_span)[span_12](end_span)</li>
+          </ul>
+
+          <a href="#demo" class="inline-flex items-center gap-2 font-mono text-xs text-cyan-400 uppercase tracking-wider group-hover:translate-x-1 transition-transform">
+            <span>Uji Coba Demo</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Service 2: Video Editing & Motion FX -->
+        <div class="glass-panel p-8 rounded-2xl border border-purple-500/20 hover:border-purple-400 transition-all duration-300 hover:-translate-y-2 group hud-box">
+          <div class="w-14 h-14 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/30 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:shadow-glow-purple transition-all">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </div>
+
+          <div class="font-mono text-xs text-purple-400 uppercase tracking-widest mb-2">CATEGORY 02</div>
+          <h3 class="font-orbitron text-xl font-bold text-white mb-4 group-hover:text-purple-400 transition-colors">
+            Video Editing & Motion Design[span_13](start_span)[span_13](end_span)
+          </h3>
+          <p class="text-gray-300 text-sm font-space font-light leading-relaxed mb-6">
+            Produksi konten visual dinamis tingkat tinggi: konten Jedag-Jeduk (JJ) bertempo tinggi, Motion Graphics komersial, Tipografi kinetik, dan VFX modern.[span_14](start_span)[span_14](end_span)
+          </p>
+
+          <ul class="space-y-2.5 font-mono text-xs text-gray-400 border-t border-white/10 pt-4 mb-6">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-purple-400"></i> Beat Sync & JJ Visual Stylizing[span_15](start_span)[span_15](end_span)</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-purple-400"></i> Motion Graphics & Logo Reveal[span_16](start_span)[span_16](end_span)</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-purple-400"></i> Kinetic Typography & Overlay[span_17](start_span)[span_17](end_span)</li>
+          </ul>
+
+          <a href="#showcase" class="inline-flex items-center gap-2 font-mono text-xs text-purple-400 uppercase tracking-wider group-hover:translate-x-1 transition-transform">
+            <span>Lihat Galeri Video</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Service 3: Finance & Analytics Tools -->
+        <div class="glass-panel p-8 rounded-2xl border border-emerald-500/20 hover:border-emerald-400 transition-all duration-300 hover:-translate-y-2 group hud-box">
+          <div class="w-14 h-14 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:shadow-glow-emerald transition-all">
+            <i class="fa-solid fa-chart-pie"></i>
+          </div>
+
+          <div class="font-mono text-xs text-emerald-400 uppercase tracking-widest mb-2">CATEGORY 03</div>
+          <h3 class="font-orbitron text-xl font-bold text-white mb-4 group-hover:text-emerald-400 transition-colors">
+            Finance & Analytics Tools[span_18](start_span)[span_18](end_span)
+          </h3>
+          <p class="text-gray-300 text-sm font-space font-light leading-relaxed mb-6">
+            Pembuatan kalkulator keuangan kustom, dashboard analisis kas usaha, pencatatan otomatis, serta perkiraan anggaran transparan untuk performa bisnis.[span_19](start_span)[span_19](end_span)
+          </p>
+
+          <ul class="space-y-2.5 font-mono text-xs text-gray-400 border-t border-white/10 pt-4 mb-6">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-emerald-400"></i> Custom Financial Calculator[span_20](start_span)[span_20](end_span)</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-emerald-400"></i> Budget & Profit Forecasting[span_21](start_span)[span_21](end_span)</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-angle-right text-emerald-400"></i> Integrated Reporting Dashboard[span_22](start_span)[span_22](end_span)</li>
+          </ul>
+
+          <a href="#estimator" class="inline-flex items-center gap-2 font-mono text-xs text-emerald-400 uppercase tracking-wider group-hover:translate-x-1 transition-transform">
+            <span>Hitung Estimasi Proyek</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE DEMO PLAYGROUND (LIVE EXPERIENCE) -->
+  <section id="demo" class="py-28 relative z-10 bg-black/40 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="font-mono text-xs text-cyan-400 uppercase tracking-widest mb-3">// 02. LIVE INTERACTIVE PLAYGROUND</div>
+        <h2 class="font-orbitron text-3xl sm:text-5xl font-black uppercase text-white mb-4">
+          COBA SIMULASI <span class="gradient-text-cyan">SEKARANG</span>
+        </h2>
+        <p class="text-gray-400 text-sm font-space font-light">
+          Uji langsung dua sampel karya interaktif kami di bawah ini: Simulasi Canvas Edukatif Fisika/Antariksa dan Kalkulator Proyeksi Finansial Real-time.[span_23](start_span)[span_23](end_span)
+        </p>
+      </div>
+
+      <!-- Tab Buttons -->
+      <div class="flex justify-center mb-8 gap-4">
+        <button id="tabCanvasBtn" onclick="switchDemoTab('canvas')" class="px-6 py-3 rounded-xl font-orbitron font-bold text-xs uppercase tracking-wider bg-cyan-500 text-black shadow-glow-cyan transition-all">
+          <i class="fa-solid fa-atom mr-2"></i> Simulasi Edukasi Canvas
+        </button>
+        <button id="tabCalcBtn" onclick="switchDemoTab('calc')" class="px-6 py-3 rounded-xl font-orbitron font-bold text-xs uppercase tracking-wider glass-panel border border-white/20 text-gray-300 hover:text-white transition-all">
+          <i class="fa-solid fa-calculator mr-2"></i> Dashboard Finance Calculator
+        </button>
+      </div>
+
+      <!-- DEMO CONTENT CONTAINER -->
+      <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-white/10 relative overflow-hidden">
+        
+        <!-- DEMO 1: EDUCATIONAL CANVAS SIMULATION -->
+        <div id="demoCanvasView" class="block">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4 border-b border-white/10 pb-4">
+            <div>
+              <h3 class="font-orbitron font-bold text-lg text-white">Simulasi Edukasi: Orbit Partikel & Gravitasi Antariksa[span_24](start_span)[span_24](end_span)</h3>
+              <p class="text-xs text-gray-400 font-mono">Gunakan mouse atau sentuhan jari Anda di canvas untuk berinteraksi dengan medan gravitasi.[span_25](start_span)[span_25](end_span)</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <button onclick="resetCanvas()" class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-cyan-400 hover:bg-cyan-500/20">
+                <i class="fa-solid fa-rotate-right mr-1"></i> Reset Canvas
+              </button>
+            </div>
+          </div>
+
+          <!-- Canvas Element -->
+          <div class="relative w-full h-[380px] bg-black/80 rounded-xl overflow-hidden border border-white/10">
+            <canvas id="eduCanvas" class="w-full h-full cursor-crosshair"></canvas>
+            
+            <!-- Canvas Overlay Specs -->
+            <div class="absolute bottom-3 left-3 px-3 py-1.5 rounded-md bg-black/60 border border-white/10 text-[10px] font-mono text-gray-300">
+              PARTIKEL: <span id="particleCount" class="text-cyan-400">120</span> | INTERAKSI: <span class="text-emerald-400">GRAVITY WELL</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DEMO 2: FINANCE CALCULATOR WIDGET -->
+        <div id="demoCalcView" class="hidden">
+          <div class="border-b border-white/10 pb-4 mb-6">
+            <h3 class="font-orbitron font-bold text-lg text-white">Kalkulator Simulasi ROI & Laba Bersih Usaha[span_26](start_span)[span_26](end_span)</h3>
+            <p class="text-xs text-gray-400 font-mono">Masukkan angka estimasi untuk menghitung proyeksi margin finansial Anda secara cepat.[span_27](start_span)[span_27](end_span)</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <!-- Inputs -->
+            <div class="space-y-4">
+              <div>
+                <label class="block font-mono text-xs text-gray-300 mb-2">Target Pendapatan Bulanan (Rp)</label>
+                <input type="number" id="calcRevenue" value="25000000" oninput="calculateFinanceDemo()" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white font-mono text-sm focus:border-emerald-400 outline-none">
+              </div>
+              <div>
+                <label class="block font-mono text-xs text-gray-300 mb-2">Estimasi Biaya Operasional (Rp)</label>
+                <input type="number" id="calcExpense" value="9500000" oninput="calculateFinanceDemo()" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white font-mono text-sm focus:border-emerald-400 outline-none">
+              </div>
+              <div>
+                <label class="block font-mono text-xs text-gray-300 mb-2">Pajak / Alokasi Cadangan Kas (%)</label>
+                <input type="number" id="calcTax" value="10" oninput="calculateFinanceDemo()" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white font-mono text-sm focus:border-emerald-400 outline-none">
+              </div>
+            </div>
+
+            <!-- Output Display -->
+            <div class="hud-box glass-panel p-6 rounded-xl border border-emerald-500/30 text-center space-y-4">
+              <div class="font-mono text-xs text-emerald-400 uppercase tracking-widest">// ESTIMASI PROFIT BERSIH</div>
+              <div id="calcNetProfit" class="font-orbitron text-3xl font-black text-emerald-400">Rp 13.950.000</div>
+              
+              <div class="grid grid-cols-2 gap-4 pt-4 border-t border-white/10 text-left font-mono text-xs">
+                <div>
+                  <span class="text-gray-400 block">Margin Keuntungan:</span>
+                  <span id="calcMargin" class="text-white font-bold text-sm">55.8%</span>
+                </div>
+                <div>
+                  <span class="text-gray-400 block">Proyeksi Tahunan:</span>
+                  <span id="calcAnnualProfit" class="text-cyan-400 font-bold text-sm">Rp 167.400.000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWCASE GALERI VIDEO & MOTION DESIGN -->
+  <section id="showcase" class="py-28 relative z-10 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+        <div>
+          <div class="font-mono text-xs text-purple-400 uppercase tracking-widest mb-3">// 03. LAB VIDEO & MOTION</div>
+          <h2 class="font-orbitron text-3xl sm:text-5xl font-black uppercase text-white">
+            GALERI <span class="gradient-text-purple">MOTION FX</span>[span_28](start_span)[span_28](end_span)
+          </h2>
+        </div>
+        <p class="text-gray-400 text-sm font-space font-light max-w-md mt-4 md:mt-0">
+          Koleksi gaya penyuntingan video dari ritme Jedag-Jedug (JJ) presisi tinggi hingga Motion Graphics korporat dan Typography Kinetik.[span_29](start_span)[span_29](end_span)
+        </p>
+      </div>
+
+      <!-- Video Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Video Item 1 -->
+        <div class="glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-purple-400/50 transition-all duration-300 group">
+          <div class="relative h-52 bg-purple-950/30 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=800" alt="Jedag Jedug FX" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+            
+            <button onclick="playVideoModal('Jedag-Jedug Beat Sync FX', 'Gaya editing bertempo cepat dengan Beat Sync visual presisi, Zoom Flash, dan Transitions warna dinamis.')" class="absolute inset-0 m-auto w-12 h-12 rounded-full bg-purple-600 text-white flex items-center justify-center text-lg shadow-glow-purple group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-play ml-1"></i>
+            </button>
+            <span class="absolute top-3 right-3 font-mono text-[10px] px-2 py-1 rounded bg-black/70 text-purple-400 border border-purple-500/30">JJ / BEAT SYNC</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-orbitron font-bold text-white text-base mb-2 group-hover:text-purple-400 transition-colors">JJ & Style Transitions[span_30](start_span)[span_30](end_span)</h3>
+            <p class="text-gray-400 text-xs font-space font-light">Editing video sosial media dengan ritme musik ketat, Shake Effect, dan Glow Neon Sync.[span_31](start_span)[span_31](end_span)</p>
+          </div>
+        </div>
+
+        <!-- Video Item 2 -->
+        <div class="glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-cyan-400/50 transition-all duration-300 group">
+          <div class="relative h-52 bg-cyan-950/30 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800" alt="Motion Graphics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+            
+            <button onclick="playVideoModal('Corporate Motion Graphics', 'Animasi vector 2D/3D, Logo Reveal futuristik, serta infografis bergerak untuk promosi bisnis.')" class="absolute inset-0 m-auto w-12 h-12 rounded-full bg-cyan-500 text-black flex items-center justify-center text-lg shadow-glow-cyan group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-play ml-1"></i>
+            </button>
+            <span class="absolute top-3 right-3 font-mono text-[10px] px-2 py-1 rounded bg-black/70 text-cyan-400 border border-cyan-500/30">MOTION GRAPHICS</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-orbitron font-bold text-white text-base mb-2 group-hover:text-cyan-400 transition-colors">Commercial Mograph & Logo[span_32](start_span)[span_32](end_span)</h3>
+            <p class="text-gray-400 text-xs font-space font-light">Animasi logo 3D, bumper video, dan penjelasan produk profesional dengan gaya bersih.[span_33](start_span)[span_33](end_span)</p>
+          </div>
+        </div>
+
+        <!-- Video Item 3 -->
+        <div class="glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-emerald-400/50 transition-all duration-300 group">
+          <div class="relative h-52 bg-emerald-950/30 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800" alt="Kinetic Typography" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+            
+            <button onclick="playVideoModal('Kinetic Typography FX', 'Animasi teks futuristik bergerak seirama dengan sulit suara (voiceover) atau musik latar.')" class="absolute inset-0 m-auto w-12 h-12 rounded-full bg-emerald-500 text-black flex items-center justify-center text-lg shadow-glow-emerald group-hover:scale-110 transition-transform">
+              <i class="fa-solid fa-play ml-1"></i>
+            </button>
+            <span class="absolute top-3 right-3 font-mono text-[10px] px-2 py-1 rounded bg-black/70 text-emerald-400 border border-emerald-500/30">TYPOGRAPHY FX</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-orbitron font-bold text-white text-base mb-2 group-hover:text-emerald-400 transition-colors">Futuristic Kinetic Text[span_34](start_span)[span_34](end_span)</h3>
+            <p class="text-gray-400 text-xs font-space font-light">Penataan font bergerak dinamis untuk narasi promosi, video lirik, dan intro konten.[span_35](start_span)[span_35](end_span)</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ESTIMATOR INTERAKTIF HARGA & ESTIMASI PROYEK -->
+  <section id="estimator" class="py-28 relative z-10 bg-black/50 border-t border-white/10">
+    <div class="max-w-5xl mx-auto px-6">
+      
+      <div class="text-center mb-12">
+        <div class="font-mono text-xs text-cyan-400 uppercase tracking-widest mb-3">// 04. PROJECTION CALCULATOR</div>
+        <h2 class="font-orbitron text-3xl sm:text-5xl font-black uppercase text-white mb-4">
+          KALKULATOR <span class="gradient-text-cyan">ESTIMASI</span> PROYEK[span_36](start_span)[span_36](end_span)
+        </h2>
+        <p class="text-gray-400 text-sm font-space font-light">
+          Hitung perkiraan biaya dan estimasi waktu pengerjaan untuk layanan pilihan Anda di Vell Market.[span_37](start_span)[span_37](end_span)
+        </p>
+      </div>
+
+      <div class="glass-panel p-8 sm:p-10 rounded-2xl border border-cyan-500/30 hud-box">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Interactive Selectors -->
+          <div class="lg:col-span-7 space-y-6">
+            <div>
+              <label class="block font-mono text-xs text-gray-300 uppercase mb-2">Pilih Jenis Layanan Utama:</label>
+              <select id="estService" onchange="calculateProjectEstimate()" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white font-mono text-sm focus:border-cyan-400 outline-none">
+                <option value="web" class="bg-slate-900">Web Edukatif & Interaktif (Canvas / Modul)</option>
+                <option value="motion" class="bg-slate-900">Video Editing & Motion Graphics (JJ / Mograph)</option>
+                <option value="finance" class="bg-slate-900">Finance Tools & Kalkulator Keuangan Custom</option>
+                <option value="bundle" class="bg-slate-900">Bundle Lengkap (Web + Video + Finance)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block font-mono text-xs text-gray-300 uppercase mb-2">Skala / Kompleksitas Fitur:</label>
+              <select id="estComplexity" onchange="calculateProjectEstimate()" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white font-mono text-sm focus:border-cyan-400 outline-none">
+                <option value="basic" class="bg-slate-900">Standar (Fitur Esensial & Cepat)</option>
+                <option value="pro" selected class="bg-slate-900">Pro Korporat (Fitur Lengkap + Custom FX)</option>
+                <option value="enterprise" class="bg-slate-900">Enterprise High-Tech (Full Cyber Custom)</option>
+              </select>
+            </div>
+
+            <!-- Extras Checkboxes -->
+            <div class="space-y-3 pt-2">
+              <label class="block font-mono text-xs text-gray-300 uppercase">Layanan Tambahan:</label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-xs text-gray-300">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" id="extSpeed" onchange="calculateProjectEstimate()" class="accent-cyan-400"> Priority Express Delivery
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" id="extSource" onchange="calculateProjectEstimate()" class="accent-cyan-400"> Source Code & Project File (AE/PR)
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Output Box -->
+          <div class="lg:col-span-5">
+            <div class="glass-panel p-6 rounded-xl border border-cyan-400/40 text-center space-y-4 bg-black/50">
+              <span class="font-mono text-xs text-gray-400 uppercase tracking-widest block">// ESTIMASI AKHIR</span>
+              
+              <div>
+                <span class="text-xs font-mono text-gray-400 block mb-1">Perkiraan Investasi:</span>
+                <div id="estTotalPrice" class="font-orbitron text-2xl sm:text-3xl font-black text-cyan-400">Rp 2.500.000</div>
+              </div>
+
+              <div class="pt-4 border-t border-white/10 flex justify-between items-center font-mono text-xs">
+                <span class="text-gray-400">Waktu Pengerjaan:</span>
+                <span id="estTimeline" class="text-emerald-400 font-bold">3 - 5 Hari Kerja</span>
+              </div>
+
+              <a href="#kontak" onclick="prefillContactForm()" class="w-full py-3 rounded-lg bg-cyan-400 text-black font-orbitron font-bold text-xs uppercase tracking-wider hover:bg-cyan-300 shadow-glow-cyan transition-all block text-center">
+                Pesan Sesuai Estimasi Ini
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAK & FORM INISIASI ORDER -->
+  <section id="kontak" class="py-28 relative z-10 border-t border-white/10">
+    <div class="max-w-4xl mx-auto px-6">
+      
+      <div class="text-center mb-12">
+        <div class="font-mono text-xs text-cyan-400 uppercase tracking-widest mb-3">// 05. FORM KONSULTASI & ORDER</div>
+        <h2 class="font-orbitron text-3xl sm:text-5xl font-black uppercase text-white mb-4">
+          MULAILAH BERSAMA <span class="gradient-text-cyan">VELL MARKET</span>[span_38](start_span)[span_38](end_span)
+        </h2>
+        <p class="text-gray-400 text-sm font-space font-light">
+          Isi formulir singkat di bawah ini. Tim teknis dan kreatif kami akan merespons transmisi Anda dalam kurun waktu 1x24 jam.[span_39](start_span)[span_39](end_span)
+        </p>
+      </div>
+
+      <!-- FORM YANG SUDAH DIPERBARUI AGAR LANGSUNG KIRIM KE WA -->
+      <form onsubmit="handleOrderSubmit(event)" class="glass-panel p-8 sm:p-10 rounded-2xl border border-white/10 space-y-6 hud-box">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            <label class="block font-mono text-xs uppercase text-gray-300 mb-2">Nama Klien / Instansi</label>
+            <input type="text" id="formName" required placeholder="Contoh: Alex Pratama" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:border-cyan-400 font-mono text-sm">
+          </div>
+          <div>
+            <label class="block font-mono text-xs uppercase text-gray-300 mb-2">WhatsApp / Email</label>
+            <input type="text" id="formContact" required placeholder="0812xxxx / email@domain.com" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:border-cyan-400 font-mono text-sm">
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-mono text-xs uppercase text-gray-300 mb-2">Fokus Proyek Utama</label>
+          <select id="formService" class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:border-cyan-400 font-mono text-sm">
+            <option class="bg-slate-900">Web Edukatif & Interaktif</option>
+            <option class="bg-slate-900">Video Editing / Motion Graphics / JJ</option>
+            <option class="bg-slate-900">Finance & Analytics Tools</option>
+            <option class="bg-slate-900">Konsultasi Multi-Layanan</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-mono text-xs uppercase text-gray-300 mb-2">Deskripsi Kebutuhan / Catatan Proyek</label>
+          <textarea id="formMessage" rows="4" required placeholder="Jelaskan secara singkat ide web, gaya video, atau kalkulator finance yang Anda harapkan..." class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:border-cyan-400 font-mono text-sm"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-black font-orbitron font-extrabold text-xs uppercase tracking-wider hover:brightness-125 shadow-glow-cyan transition-all flex items-center justify-center gap-2 cursor-pointer">
+          <i class="fa-solid fa-paper-plane"></i>
+          <span>Kirim Transmisi Pesanan ke WhatsApp</span>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-12 border-t border-white/10 glass-nav relative z-10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center gap-3">
+        <span class="font-orbitron font-bold text-white tracking-widest text-sm">VELL MARKET</span>
+        <span class="text-xs text-gray-500 font-mono">// Digital, Motion & Finance Ecosystem © 2026[span_40](start_span)[span_40](end_span)</span>
+      </div>
+
+      <div class="flex items-center gap-6 text-gray-400 text-base">
+        <a href="https://www.instagram.com/syddmlvngrr_?exln=MXR2dW00d2E2ZzI0aA==" class="hover:text-cyan-400 transition-colors" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="hover:text-cyan-400 transition-colors" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="#" class="hover:text-cyan-400 transition-colors" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" class="hover:text-cyan-400 transition-colors" title="GitHub"><i class="fa-brands fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL VIDEO PLAYER PREVIEW -->
+  <div id="videoModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="glass-panel rounded-2xl max-w-xl w-full p-6 border border-purple-500/40 relative">
+      <button onclick="closeVideoModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      
+      <div id="modalCategory" class="font-mono text-xs text-purple-400 uppercase mb-2">PREVIEW PLAYBACK</div>
+      <h3 id="modalTitle" class="font-orbitron font-bold text-lg text-white mb-4">Title</h3>
+      
+      <!-- Simulated Player Screen -->
+      <div class="relative w-full h-64 bg-black rounded-xl overflow-hidden border border-white/10 mb-4 flex items-center justify-center">
+        <div class="text-center p-6 space-y-3">
+          <i class="fa-solid fa-circle-play text-5xl text-purple-400 animate-pulse"></i>
+          <p id="modalDesc" class="text-xs text-gray-300 font-mono">Deskripsi sampel video...</p>
+        </div>
+      </div>
+
+      <button onclick="closeVideoModal()" class="w-full py-2.5 rounded-lg bg-white/10 text-white font-mono text-xs hover:bg-white/20">
+        Tutup Preview
+      </button>
+    </div>
+  </div>
+
+  <!-- NOTIFICATION TOAST -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 glass-panel border border-cyan-400/50 px-5 py-4 rounded-xl text-cyan-400 font-mono text-xs hidden shadow-glow-cyan flex items-center gap-3">
+    <i class="fa-solid fa-satellite-dish text-base animate-spin"></i>
+    <span id="toastMsg">Pesan terkirim!</span>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Mobile Navigation Toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('flex');
+    }
+
+    // Switch Interactive Demo Tabs
+    function switchDemoTab(tab) {
+      const canvasView = document.getElementById('demoCanvasView');
+      const calcView = document.getElementById('demoCalcView');
+      const canvasBtn = document.getElementById('tabCanvasBtn');
+      const calcBtn = document.getElementById('tabCalcBtn');
+
+      if (tab === 'canvas') {
+        canvasView.classList.remove('hidden');
+        calcView.classList.add('hidden');
+
+        canvasBtn.className = "px-6 py-3 rounded-xl font-orbitron font-bold text-xs uppercase tracking-wider bg-cyan-500 text-black shadow-glow-cyan transition-all";
+        calcBtn.className = "px-6 py-3 rounded-xl font-orbitron font-bold text-xs uppercase tracking-wider glass-panel border border-white/20 text-gray-300 hover:text-white transition-all";
+      } else {
+        canvasView.classList.add('hidden');
+        calcView.classList.remove('hidden');
+
+        calcBtn.className = "px-6 py-3 rounded-xl font-orbitron font-bold text-xs uppercase tracking-wider bg-emerald-500 text-black shadow-glow-emerald transition-all";
+        canvasBtn.className = "px-6 py-3 rounded-xl font-orbitron font-bold text-xs uppercase tracking-wider glass-panel border border-white/20 text-gray-300 hover:text-white transition-all";
+      }
+    }
+
+    // Interactive Canvas Physics Simulation
+    let canvas, ctx, particles = [];
+    let mouse = { x: null, y: null, radius: 100 };
+
+    function initCanvas() {
+      canvas = document.getElementById('eduCanvas');
+      if (!canvas) return;
+      ctx = canvas.getContext('2d');
+
+      // Resize canvas relative to container
+      canvas.width = canvas.parentElement.clientWidth;
+      canvas.height = canvas.parentElement.clientHeight;
+
+      particles = [];
+      const count = 100;
+      document.getElementById('particleCount').innerText = count;
+
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 2 + 1,
+          color: Math.random() > 0.5 ? '#00f0ff' : '#8b5cf6',
+          vx: (Math.random() - 0.5) * 1.5,
+          vy: (Math.random() - 0.5) * 1.5
+        });
+      }
+
+      // Mouse Tracking
+      canvas.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      });
+
+      canvas.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
+      animateCanvas();
+    }
+
+    function animateCanvas() {
+      requestAnimationFrame(animateCanvas);
+      ctx.fillStyle = 'rgba(3, 6, 17, 0.2)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+        // Gravity pull toward mouse
+        if (mouse.x && mouse.y) {
+          const dx = mouse.x - p.x;
+          const dy = mouse.y - p.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < mouse.radius) {
+            p.x += dx * 0.02;
+            p.y += dy * 0.02;
+          }
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+      });
+    }
+
+    function resetCanvas() {
+      initCanvas();
+    }
+
+    // Finance Calculator Demo Logic
+    function calculateFinanceDemo() {
+      const rev = parseFloat(document.getElementById('calcRevenue').value) || 0;
+      const exp = parseFloat(document.getElementById('calcExpense').value) || 0;
+      const taxPct = parseFloat(document.getElementById('calcTax').value) || 0;
+
+      const gross = rev - exp;
+      const taxVal = gross > 0 ? (gross * (taxPct / 100)) : 0;
+      const net = gross - taxVal;
+
+      const margin = rev > 0 ? ((net / rev) * 100).toFixed(1) : 0;
+      const annual = net * 12;
+
+      document.getElementById('calcNetProfit').innerText = `Rp ${net.toLocaleString('id-ID')}`;
+      document.getElementById('calcMargin').innerText = `${margin}%`;
+      document.getElementById('calcAnnualProfit').innerText = `Rp ${annual.toLocaleString('id-ID')}`;
+    }
+
+    // Project Estimator Calculation Logic
+    function calculateProjectEstimate() {
+      const service = document.getElementById('estService').value;
+      const comp = document.getElementById('estComplexity').value;
+      const isExpress = document.getElementById('extSpeed').checked;
+      const isSource = document.getElementById('extSource').checked;
+
+      let basePrice = 1500000;
+      let days = "3 - 5 Hari Kerja";
+
+      if (service === 'web') {
+        basePrice = 2000000;
+        days = "4 - 7 Hari Kerja";
+      } else if (service === 'motion') {
+        basePrice = 1200000;
+        days = "2 - 4 Hari Kerja";
+      } else if (service === 'finance') {
+        basePrice = 1800000;
+        days = "3 - 5 Hari Kerja";
+      } else if (service === 'bundle') {
+        basePrice = 4500000;
+        days = "7 - 12 Hari Kerja";
+      }
+
+      // Multipliers
+      if (comp === 'pro') basePrice *= 1.5;
+      if (comp === 'enterprise') basePrice *= 2.5;
+
+      if (isExpress) basePrice += 500000;
+      if (isSource) basePrice += 400000;
+
+      document.getElementById('estTotalPrice').innerText = `Rp ${basePrice.toLocaleString('id-ID')}`;
+      document.getElementById('estTimeline').innerText = days;
+    }
+
+    function prefillContactForm() {
+      const serviceSelect = document.getElementById('estService').value;
+      const formSelect = document.getElementById('formService');
+
+      if (serviceSelect === 'web') formSelect.selectedIndex = 0;
+      if (serviceSelect === 'motion') formSelect.selectedIndex = 1;
+      if (serviceSelect === 'finance') formSelect.selectedIndex = 2;
+      if (serviceSelect === 'bundle') formSelect.selectedIndex = 3;
+
+      document.getElementById('formMessage').value = `Halo Vell Market, saya ingin memesan proyek sesuai estimasi kalkulator (${document.getElementById('estTotalPrice').innerText}). Mohon informasi pengerjaannya.`;
+    }
+
+    // Modal Controls for Video Showcase
+    function playVideoModal(title, desc) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalDesc').innerText = desc;
+      document.getElementById('videoModal').classList.remove('hidden');
+    }
+
+    function closeVideoModal() {
+      document.getElementById('videoModal').classList.add('hidden');
+    }
+
+    // Notification Toast Helper
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMsg').innerText = msg;
+      toast.classList.remove('hidden');
+
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 4000);
+    }
+
+    // Form Submission Handler (Direct to WhatsApp)
+    function handleOrderSubmit(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('formName').value.trim();
+      const contact = document.getElementById('formContact').value.trim();
+      const service = document.getElementById('formService').value;
+      const message = document.getElementById('formMessage').value.trim();
+
+      if (!name || !contact || !message) {
+        showToast("Harap isi semua kolom form terlebih dahulu!");
+        return;
+      }
+
+      // Nomor WhatsApp tujuan (menggunakan nomor dari project kamu)
+      const adminWhatsAppNumber = "6281339946116"; 
+
+      // Format pesan yang dikirim ke WA
+      const text = `Halo Vell Market, saya ingin mengirim transmisi pesanan baru:%0A%0A` +
+                   `*Nama/Instansi:* ${encodeURIComponent(name)}%0A` +
+                   `*Kontak (WA/Email):* ${encodeURIComponent(contact)}%0A` +
+                   `*Fokus Proyek:* ${encodeURIComponent(service)}%0A` +
+                   `*Catatan/Kebutuhan:* ${encodeURIComponent(message)}`;
+
+      const waURL = `https://wa.me/${adminWhatsAppNumber}?text=${text}`;
+      
+      showToast(`Membuka WhatsApp untuk mengirim transmisi...`);
+      
+      // Buka tab baru ke WhatsApp Web / Aplikasi WhatsApp
+      setTimeout(() => {
+        window.open(waURL, '_blank');
+      }, 800);
+    }
+
+    // Initialize Canvas & Calculations on Load
+    window.onload = function() {
+      initCanvas();
+      calculateFinanceDemo();
+      calculateProjectEstimate();
+    };
+
+    window.onresize = function() {
+      initCanvas();
+    };
+  </script>
+</body>
+</html>
